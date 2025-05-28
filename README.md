@@ -1,5 +1,9 @@
-# Geospatial Project Francesco di Massimo
-Urban walkability can be understood and measured in many different ways. Because of this, the term is difficult to define. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services is accessible on foot. 
+# Geospatial Project – Francesco Di Massimo
 
-Here I will try to evaluate the walkability and bikeability of the city of Rome by analyzing multiple spatial metrics and combining them into a final composite index. The goal is to identify areas that are more or less accessible by walking and cycling.
+Urban walkability can be understood and measured in many different ways, making the concept itself somewhat difficult to define. A walkable place might be characterized by a dense street network, or by the availability of a wide range of services within walking distance.
+
+Other factors — such as the **morphological characteristics** of the urban landscape — can also significantly influence both **walkability** and **bikeability**, especially in hilly or uneven environments like Rome.
+
+In this project, I aim to evaluate the **walkability and bikeability of the city of Rome** by analyzing a set of spatial metrics and combining them into a **composite accessibility index**. The objective is to identify which areas of the city are more — or less — accessible by walking and cycling, in order to inform future planning and mobility strategies.
+
 

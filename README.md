@@ -39,13 +39,77 @@ pip install -r requirements.txt
 ---
 
 ## 📌 Project Structure
+The project is organized into separate notebooks, each addressing a different component of walkability through a specific methodological approach. Every notebook focuses on a distinct spatial dimension — connectivity, accessibility, and morphology — and concludes with a visualization of Rome’s municipalities based on that particular criterion.
 
-### 1. 🧭 Connectivity Analysis (`connectivity.ipynb`)
-- Download and preprocess **OSM street network** using `osmnx`
-- Project and clip the network to the administrative boundaries of Rome’s **municipi**
-- Compute **node density** (nodes/km²) as a measure of network connectivity
-- Visualize node distribution and density ranking per municipio
+The final notebook, focused on slope and urban morphology, also includes the construction of the composite Walkability Index, which combines the previous metrics into a single indicator.
 
+### 1. Connectivity (`connectivity.ipynb`)
+- Download and preprocess **OSM street network** using osmnx  
+- Project and clip the network to the administrative boundaries of Rome’s **municipalities**  
+- Perform cleaning of neighborhoods to ensure smoother analysis  
+- Initially replicate the first part of the walkability analysis from [this project](https://github.com/eemilhaa/walkability-analysis) to provide an overview of connectivity across the entire city  
+- Compute **node density** (nodes/km²) as a measure of network connectivity  
+- Visualize node distribution and density per municipality  
+
+
+
+---
+
+### 2. Accessibility (`15min_score.ipynb`)
+- Reproduced the **15-minute City score** methodology as referenced in the literature, which evaluates access to essential amenities within a 15-minute walk.  
+- Adapted the approach to suit the local context of Rome and the available data.  
+- To ensure a robust classification of municipalities, calculated the **coverage ratio**, the fraction of hexagons with valid cityscore data.  
+- Computed the **mean cityscore** only over hexagons with data, then defined a **weighted cityscore** as:  
+
+  `mean_cityscore_weighted = mean_cityscore × coverage_ratio`  
+
+- This weighting accounts for municipalities with incomplete data by proportionally reducing their scores, reflecting actual lower accessibility due to limited pedestrian connectivity or amenity reachability.  
+- Calculated an **aggregated score per municipality** based on this weighted cityscore.  
+- Visualized the results for clear interpretation of accessibility patterns across Rome’s municipalities.
+
+
+
+---
+
+### 3. Morphology (`slope.ipynb`)
+- Provide urban context by relating slope values to the morphology of Rome’s municipalities  
+- Download and preprocess **Copernicus DEM** (30m resolution)  
+- Reproject DEM to **EPSG:25833** for accurate metric slope computation  
+- Compute slope in **degrees** using:  
+  - `gdaldem slope` from GDAL  
+- Use **zonal statistics** to compute average slope per municipality  
+- Visualize slope distribution and its impact on walkability  
+
+
+
+
+---
+
+### 4. 🧮 Composite Walkability Index (inside `slope.ipynb`)
+- Normalize individual components:
+  - **Node density**
+  - **mean_cityscore_weighted**
+  - **Average slope (inversely weighted)**
+- Combine metrics into a final **Walkability Composite Index (WCI)**
+- Rank and visualize the results across municipalities
+- Discuss anomalies (e.g. Giustiniana’s high slope vs. accessibility)
+
+---
+
+## 📌 Notes & Limitations
+- Elevation and slope calculations rely on the accuracy of **COP-DEM GLO-30** data and may be affected by resolution.
+- Walkability is modeled purely from spatial structure and access — no behavioral or socioeconomic factors are included (e.g. age, safety, comfort).
+
+
+---
+
+---
+
+## 📌 Results
+
+
+
+---
 > ![overview Map](output/graph_overview.png)
 
 > ![net_x_mun Map](output/before_cleaning_map.png)
@@ -54,91 +118,32 @@ pip install -r requirements.txt
 
 > ![ranking_connectivity Map](output/ranking_connectivity.png)
 
----
-
-### 2. 🕒 15-Minute Access Score (`15min_score.ipynb`)
-- Collect and preprocess **POIs (Points of Interest)**: schools, healthcare, shops, transit, etc.
-- Create a **15-minute walking isochrone** from the street graph (based on travel time at 4.5 km/h)
-- For each municipio, calculate the **proportion of POIs accessible within 15 minutes**
-- Normalize the score (0–100 scale) across all zones
-
 >  ![15min_score Map](output/15min_score.png)
 
 >  ![coverage Map](output/hex_missing.png)
 
 >  ![ranking_15min Map](output/ranking_15min.png)
 
----
-
-### 3. 🏔️ Slope Analysis (`slope.ipynb`)
-- Download and preprocess **Copernicus DEM** (30m resolution)
-- Reproject DEM to **EPSG:25833** for accurate metric slope computation
-- Compute slope in **degrees** using:
-  - A custom Sobel filter method *(if hardware-limited)*, or
-  - `gdaldem slope` from GDAL for efficiency
-- Use **zonal statistics** to compute average slope per municipio
-- Filter out no-data zones (e.g. sea areas)
-
 >  ![DEM Map](output/DEM.png)
 
 >  ![slope_x_municipalities Map](output/slope_x_mun.png)
 
 >  ![ranking_slope Map](output/ranking_slope.png)
-
----
-
-### 4. 🧮 Composite Walkability Index (`wci_index.ipynb`)
-- Normalize individual components:
-  - **Node density**
-  - **15-minute score**
-  - **Average slope (inversely weighted)**
-- Combine metrics into a final **Walkability Composite Index (WCI)**
-- Rank and visualize the results across municipalities
-- Discuss anomalies (e.g. Giustiniana’s high slope vs. accessibility)
-
-> 📊 **Output**: Final WCI map + composite table with ranking + interpretation of results
-
----
-
-## 📌 Notes & Limitations
-- Elevation and slope calculations rely on the accuracy of **COP-DEM GLO-30** data and may be affected by resolution.
-- Walkability is modeled purely from spatial structure and access — no behavioral or socioeconomic factors are included (e.g. age, safety, comfort).
-- Due to hardware limitations, **RichDEM** was not used; slope was computed with GDAL or Sobel filtering.
-
 ---
 
 ## 📁 Repository Structure
 - **Walkability-Rome/**
   - **data/**  
-    Cartella con tutti i dati di input (DEM, esportazioni OSM, confini)
     - **slope_d/**  
-      DEM e output della pendenza
     - **connectivity_d/**  
-      Rete e nodi processati
-    - **poi_d/**  
-      Punti di interesse e risultati di accessibilità
+    - **15min_d/**  
   - **notebooks/**  
-    Notebook Jupyter con le analisi principali
     - `connectivity.ipynb`  
-      Densità nodi e metriche di rete
     - `15min_score.ipynb`  
-      Calcolo del punteggio di accessibilità a 15 minuti
     - `slope.ipynb`  
-      Analisi della pendenza e metriche del terreno
-    - `wci_index.ipynb`  
-      Creazione dell’indice composito e risultati finali
   - **outputs/**  
-    Grafici, mappe, esportazioni CSV
-    - **rankings/**  
-      CSV con ranking di densità nodi, pendenza, WCI
-    - **maps/**  
-      Mappe tematiche, hillshade, mappe indice finale
-  - **utils/**  
-    Script e funzioni di supporto riutilizzabili
   - `README.md`  
-    Documentazione del progetto
   - `requirements.txt`  
-    Dipendenze Python
 
 ---
 

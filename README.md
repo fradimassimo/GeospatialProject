@@ -5,7 +5,7 @@ Urban walkability can be understood and measured in many different ways, which m
 
 However, other factors — such as the **morphological characteristics** of the urban landscape — can also significantly influence both **walkability**, especially in topographically complex cities like Rome.
 
-This project aims to evaluate the **walkability of the city of Rome** by analyzing a set of spatial metrics derived from **OpenStreetMap (OSM)** data and **satellite elevation data** from the **Copernicus Digital Elevation Model (COP-DEM)**. These metrics are then combined into a **composite accessibility index (WCI)** to identify which municipalities of Rome are more — or less — accessible by foot. The results are intended to inform future urban planning and sustainable mobility strategies.
+This project aims to evaluate the **walkability of the city of Rome** by analyzing a set of spatial metrics derived from **OpenStreetMap (OSM)** data and **satellite elevation data** from the **Copernicus Digital Elevation Model (COP-DEM)**. These metrics are then combined into a **composite accessibility index (WCI)** to identify which municipalities of Rome are more — or less — accessible by foot. 
 
 ---
 
@@ -46,7 +46,13 @@ pip install -r requirements.txt
 - Compute **node density** (nodes/km²) as a measure of network connectivity
 - Visualize node distribution and density ranking per municipio
 
-> 📊 **Output**: Choropleth map of node density by municipio + ranking table
+> ![overview Map](output/graph_overview.png)
+
+> ![net_x_mun Map](output/before_cleaning_map.png)
+
+> ![net_x_mun2 Map](output/after_cleaning_map.png)
+
+> ![ranking_connectivity Map](output/ranking_connectivity.png)
 
 ---
 
@@ -56,7 +62,11 @@ pip install -r requirements.txt
 - For each municipio, calculate the **proportion of POIs accessible within 15 minutes**
 - Normalize the score (0–100 scale) across all zones
 
-> 📊 **Output**: Accessibility score maps + POI coverage summary
+>  ![15min_score Map](output/15min_score.png)
+
+>  ![coverage Map](output/hex_missing.png)
+
+>  ![ranking_15min Map](output/ranking_15min.png)
 
 ---
 
@@ -69,7 +79,11 @@ pip install -r requirements.txt
 - Use **zonal statistics** to compute average slope per municipio
 - Filter out no-data zones (e.g. sea areas)
 
-> 📊 **Output**: Slope maps (hillshade and grayscale) + slope distribution by municipio
+>  ![DEM Map](output/DEM.png)
+
+>  ![slope_x_municipalities Map](output/slope_x_mun.png)
+
+>  ![ranking_slope Map](output/ranking_slope.png)
 
 ---
 

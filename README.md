@@ -10,7 +10,7 @@ This project aims to evaluate the **walkability of the city of Rome** by analyzi
 
 ---
 ## Repository Structure
-- **Walkability-Rome/**
+- **GeospatialProject/**
   - **data/**  
     - **slope_d/**  
     - **connectivity_d/**  

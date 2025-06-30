@@ -6,7 +6,22 @@ Urban walkability can be understood and measured in many different ways, which m
 However, other factors — such as the **morphological characteristics** of the urban landscape — can also significantly influence both **walkability**, especially in topographically complex cities like Rome.
 
 This project aims to evaluate the **walkability of the city of Rome** by analyzing a set of spatial metrics derived from **OpenStreetMap (OSM)** data and **satellite elevation data** from the **Copernicus Digital Elevation Model (COP-DEM)**. These metrics are then combined into a **composite accessibility index (WCI)** to identify which municipalities of Rome are more — or less — accessible by foot. 
+> ![overview Map](output/graph_overview.png)
 
+---
+## 📁 Repository Structure
+- **Walkability-Rome/**
+  - **data/**  
+    - **slope_d/**  
+    - **connectivity_d/**  
+    - **15min_d/**  
+  - **notebooks/**  
+    - `connectivity.ipynb`  
+    - `15min_score.ipynb`  
+    - `slope.ipynb`  
+  - **outputs/**  
+  - `README.md`  
+  - `requirements.txt`  
 ---
 
 ## Installation Notes
@@ -92,7 +107,6 @@ The final notebook, focused on slope and urban morphology, also includes the con
   - **Average slope (inversely weighted)**
 - Combine metrics into a final **Walkability Composite Index (WCI)**
 - Rank and visualize the results across municipalities
-- Discuss anomalies (e.g. Giustiniana’s high slope vs. accessibility)
 
 ---
 
@@ -110,40 +124,7 @@ The final notebook, focused on slope and urban morphology, also includes the con
 
 
 ---
-> ![overview Map](output/graph_overview.png)
 
-> ![net_x_mun Map](output/before_cleaning_map.png)
-
-> ![net_x_mun2 Map](output/after_cleaning_map.png)
-
-> ![ranking_connectivity Map](output/ranking_connectivity.png)
-
->  ![15min_score Map](output/15min_score.png)
-
->  ![coverage Map](output/hex_missing.png)
-
->  ![ranking_15min Map](output/ranking_15min.png)
-
->  ![DEM Map](output/DEM.png)
-
->  ![slope_x_municipalities Map](output/slope_x_mun.png)
-
->  ![ranking_slope Map](output/ranking_slope.png)
----
-
-## 📁 Repository Structure
-- **Walkability-Rome/**
-  - **data/**  
-    - **slope_d/**  
-    - **connectivity_d/**  
-    - **15min_d/**  
-  - **notebooks/**  
-    - `connectivity.ipynb`  
-    - `15min_score.ipynb`  
-    - `slope.ipynb`  
-  - **outputs/**  
-  - `README.md`  
-  - `requirements.txt`  
 
 ---
 

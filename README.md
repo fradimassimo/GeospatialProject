@@ -100,7 +100,7 @@ The final notebook, focused on slope and urban morphology, also includes the con
 
 ---
 
-### 4. 🧮 Composite Walkability Index (inside `slope.ipynb`)
+### 4. Composite Walkability Index (inside `slope.ipynb`)
 - Normalize individual components:
   - **Node density**
   - **mean_cityscore_weighted**
@@ -108,51 +108,65 @@ The final notebook, focused on slope and urban morphology, also includes the con
 - Combine metrics into a final **Walkability Composite Index (WCI)**
 - Rank and visualize the results across municipalities
 
+
+---
+
+## 📌 Results
+The Walkability Composite Index (WCI) map provides a synthesis of walkability across Rome’s municipalities by combining key metrics such as connectivity, accessibility, and morphology.
+> ![final Map](output/Boom.png)
+
+The results reflect the actual urban structure of Rome: central and well-connected districts like **Municipio I, V, and VII** score highest, while peripheral or hilly areas such as **Giustiniana** and **Municipio XIV** show lower walkability due to limited infrastructure, sparse services, and challenging morphology.
+
+It is worth noting that some municipalities span both central and peripheral areas. In such cases, the overall score may penalize too much municipalities that include highly walkable neighborhoods alongside more inaccessible zones — a limitation inherent in the use of broad administrative boundaries for aggregation.
+
+
 ---
 
 ## 📌 Notes & Limitations
 - Elevation and slope calculations rely on the accuracy of **COP-DEM GLO-30** data and may be affected by resolution.
 - Walkability is modeled purely from spatial structure and access — no behavioral or socioeconomic factors are included (e.g. age, safety, comfort).
-
-
----
-
----
-
-## 📌 Results
-
-
-
----
+- The three components used (connectivity, 15-minute score, and slope) differ in nature: connectivity is an indicator, the 15-minute score is a service-based accessibility score, and slope is a morphological factor. However, all have been treated as normalized scores to allow their integration into a single composite index. While this approach enables comparison, it simplifies their theoretical differences.
 
 
 ---
 
 ## 📁 Data Sources
-- 🗺️ **OpenStreetMap** – Road network and POIs
-- 🛰️ **Copernicus DEM GLO-30** – Elevation data (WGS84 / EGM2008)
-- 🧾 **Comune di Roma** – Municipio boundaries (GeoPackage)
+- 🗺️ **OpenStreetMap** 
+- 🛰️ **Copernicus DEM GLO-30** 
 
 ---
 
-## 🧪 Future Improvements
-- Use **RichDEM** or **WhiteboxTools** for more advanced terrain metrics
+##  Future Improvements
+- Extend the analysis to a **neighborhood-level resolution** or replicate it in other cities
+- Integrate a dedicated **bikeability component**, which shares similar spatial determinants and can complement walkability with minimal extra cost
 - Incorporate **land use**, **sidewalk quality**, or **real pedestrian travel time**
-- Apply model to **neighborhood** scale or replicate in other cities
 
 ---
 
-## 📚 References
-- **OpenStreetMap contributors** – https://www.openstreetmap.org
-- **Copernicus DEM GLO-30** – European Space Agency (ESA): https://spacedata.copernicus.eu
-- **GDAL / GDALDEM** – Geospatial Data Abstraction Library: https://gdal.org
-- **GeoPandas**, **Rasterio**, **OSMnx**, **scipy.ndimage**, **matplotlib** – Python libraries used
-- Comune di Roma – https://www.comune.roma.it (for administrative boundaries)
-- Walkability metrics literature:
-  - Frank, L. D., Sallis, J. F., Conway, T. L., Chapman, J. E., Saelens, B. E., & Bachman, W. (2006). *Many Pathways from Land Use to Health: Associations between Neighborhood Walkability and Active Transportation, Body Mass Index, and Air Quality*. Journal of the American Planning Association.
-  - Witten, K., Pearce, J., & Day, P. (2011). *Neighbourhood destination accessibility index: a GIS tool for measuring infrastructure support for neighbourhood physical activity*. Environment and Planning A.
+## References
+
+### Geospatial Tools & Libraries
+- [GDAL / GDALDEM](https://gdal.org) 
+- [GeoPandas](https://geopandas.org)
+- [Rasterio](https://rasterio.readthedocs.io)
+- [Rasterstats](https://pythonhosted.org/rasterstats/)
+- [OSMnx](https://github.com/gboeing/osmnx)
+- [Tobler](https://github.com/pysal/tobler)
+- [NetworkX](https://networkx.org)
+- [Matplotlib](https://matplotlib.org)
+- [Seaborn](https://seaborn.pydata.org)
+- [Scikit-learn](https://scikit-learn.org)
+
+### Academic Literature
+- Frank, L. D., Sallis, J. F., Conway, T. L., Chapman, J. E., Saelens, B. E., & Bachman, W. (2006).  
+  *Many Pathways from Land Use to Health: Associations between Neighborhood Walkability and Active Transportation, Body Mass Index, and Air Quality*.  
+  *Journal of the American Planning Association.*
+
+- Witten, K., Pearce, J., & Day, P. (2011).  
+  *Neighbourhood destination accessibility index: a GIS tool for measuring infrastructure support for neighbourhood physical activity*.  
+  *Environment and Planning A.*
+
+### Methodological Inspiration
+- [Walkability Analysis by eemilhaa](https://github.com/eemilhaa/walkability-analysis) 
 
 ----
-
-## 📜 License
-MIT License – Feel free to reuse or adapt the code with attribution.

@@ -5,3 +5,9 @@ shapely>=2.0.1
 h3>=3.7.6
 networkx>=2.5
 tobler>=0.11.2
+matplotlib
+seaborn==0.13.2
+numpy
+rasterio
+rasterstats
+scikit-learn

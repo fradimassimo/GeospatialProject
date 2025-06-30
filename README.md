@@ -9,6 +9,35 @@ This project aims to evaluate the **walkability of the city of Rome** by analyzi
 
 ---
 
+## Installation Notes
+This project was developed with **Python 3.11** and includes both vector and raster spatial analysis tools. To ensure full reproducibility and compatibility, follow the instructions below.\
+
+
+### ⚙️ GDAL Installation
+GDAL has to be installed on your system.
+GDAL is required for raster processing and command-line tools like `gdalwarp` and `gdaldem` used in this project.
+
+### On Ubuntu/Debian:
+sudo apt-get update\
+sudo apt-get install gdal-bin libgdal-dev
+
+
+### On macOS(Homebrew):
+brew install gdal
+
+### On Windows(conda):
+conda install -c conda-forge gdal
+
+### Python Environment Setup
+Once GDAL is installed:
+
+python -m venv venv\
+source venv/bin/activate       # or venv\Scripts\activate on Windows\
+pip install -r requirements.txt
+
+
+---
+
 ## 📌 Project Structure
 
 ### 1. 🧭 Connectivity Analysis (`connectivity.ipynb`)

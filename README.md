@@ -1,5 +1,5 @@
 # 🏙️ WCI – Walkability Composite Index  
-### *Francesco Di Massimo*
+
 
 Urban walkability can be understood and measured in many different ways, which makes the concept inherently multifaceted. A walkable environment might be defined by a dense and connected street network, or by the availability of diverse services within a short walking distance.
 
@@ -9,7 +9,7 @@ This project aims to evaluate the **walkability of the city of Rome** by analyzi
 > ![overview Map](output/graph_overview.png)
 
 ---
-## 📁 Repository Structure
+## Repository Structure
 - **Walkability-Rome/**
   - **data/**  
     - **slope_d/**  
@@ -130,9 +130,15 @@ It is worth noting that some municipalities span both central and peripheral are
 
 ---
 
-## 📁 Data Sources
-- 🗺️ **OpenStreetMap** 
-- 🛰️ **Copernicus DEM GLO-30** 
+## 📌 Important
+For any clarification or details about the methods and results, please refer to the corresponding Jupyter notebooks included in this repository.
+
+
+---
+
+## Data Sources
+- **OpenStreetMap** 
+- **Copernicus DEM GLO-30** 
 
 ---
 
@@ -145,7 +151,26 @@ It is worth noting that some municipalities span both central and peripheral are
 
 ## References
 
-### Geospatial Tools & Libraries
+
+### Literature
+- Ewing, R., & Cervero, R. (2010). Travel and the built environment: A meta-analysis. Journal of the American planning association, 76(3), 265-294.
+  https://doi.org/10.1080/01944361003766766
+
+- Frank, L. D., Sallis, J. F., Conway, T. L., Chapman, J. E., Saelens, B. E., & Bachman, W. (2006).  
+  *Many Pathways from Land Use to Health: Associations between Neighborhood Walkability and Active Transportation, Body Mass Index, and Air Quality*.  
+  *Journal of the American Planning Association.*
+  https://doi.org/10.1080/01944360608976725
+
+- Witten, K., Pearce, J., & Day, P. (2011).  
+  *Neighbourhood destination accessibility index: a GIS tool for measuring infrastructure support for neighbourhood physical activity*.  
+  *Environment and Planning A.*
+  https://doi.org/10.1068/a43105
+  
+### Methodological Foundations
+- [Walkability Analysis by eemilhaa](https://github.com/eemilhaa/walkability-analysis) – Project used as a direct methodological base for the connectivity component.
+- [15min City Score Toolkit – Urban Walkability Analytics](https://transformtransport.org/research/urban-mobility-metrics/15min-city-score-toolkit-urban-walkability-analytics/) – Open-source Python tool integrated with QGIS to assess urban accessibility based on essential services availability.
+
+### libraries
 - [GDAL / GDALDEM](https://gdal.org) 
 - [GeoPandas](https://geopandas.org)
 - [Rasterio](https://rasterio.readthedocs.io)
@@ -157,16 +182,5 @@ It is worth noting that some municipalities span both central and peripheral are
 - [Seaborn](https://seaborn.pydata.org)
 - [Scikit-learn](https://scikit-learn.org)
 
-### Academic Literature
-- Frank, L. D., Sallis, J. F., Conway, T. L., Chapman, J. E., Saelens, B. E., & Bachman, W. (2006).  
-  *Many Pathways from Land Use to Health: Associations between Neighborhood Walkability and Active Transportation, Body Mass Index, and Air Quality*.  
-  *Journal of the American Planning Association.*
-
-- Witten, K., Pearce, J., & Day, P. (2011).  
-  *Neighbourhood destination accessibility index: a GIS tool for measuring infrastructure support for neighbourhood physical activity*.  
-  *Environment and Planning A.*
-
-### Methodological Inspiration
-- [Walkability Analysis by eemilhaa](https://github.com/eemilhaa/walkability-analysis) 
 
 ----
